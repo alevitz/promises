@@ -1,0 +1,7 @@
+#card-results {
+  position: relative;
+  margin: 100px;
+}
+.card {
+  position: absolute;
+}
