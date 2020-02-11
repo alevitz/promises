@@ -36,8 +36,8 @@ async function drawPokemon(evt) {
   let pokemonNames = [];
 
   for (idx of pokemonFacts) {
-    console.log(pokemonFacts);
-    console.log(idx.data.name);
+    // console.log(pokemonFacts);
+    // console.log(idx.data.name);
     // $('#pokemon-results').append(`<p>${fact.data.name}</p>`);
     pokemonNames.push(idx.data.species.name);
   }
@@ -48,31 +48,37 @@ async function drawPokemon(evt) {
 
   let pokemonSpecies = await Promise.all([pokemon1Sp, pokemon2Sp, pokemon3Sp]);
 
-  console.log(pokemonSpecies);
+  // console.log(pokemonSpecies);
 
   let Sp1Flavor = pokemonSpecies[0].data.flavor_text_entries;
   let Sp2Flavor = pokemonSpecies[1].data.flavor_text_entries;
   let Sp3Flavor = pokemonSpecies[2].data.flavor_text_entries;
 
   console.log(Sp1Flavor);
-
+  let text1;
   for (text of Sp1Flavor) {
     if (text.language.name === "en") {
-      console.log(text.flavor_text);
+      text1 = text.flavor_text;
+      break
     }
   }
 
   for (text of Sp2Flavor) {
     if (text.language.name === "en") {
-      console.log(text.flavor_text);
+      // console.log(text.flavor_text);
     }
   }
   for (text of Sp3Flavor) {
     if (text.language.name === "en") {
-      console.log(text.flavor_text);
+      
     }
   }
+  console.log(pokemonFacts)
 
+  $('#pokemon-results').append('<div id="pokemon1"></div>');
+  $('#pokemon1').append(`<h3>${pokemonFacts[0].data.name}</h3>`);
+  $('#pokemon1').append(`<p><img class="card" src=${pokemonFacts[0].data.sprites.front_shiny} alt="card image"></img></p><br>`);
+  $('#pokemon1').append(`<p>${text1}</p>`);
 
 }
 
